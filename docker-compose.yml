@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+        nginx:
+                build: ./nginx
+                ports:
+                        - "80:80"
+                volumes:
+                        - ./media:/host/media:ro
+                        - ./static:/host/static:ro
+                depends_on:
+                        - django
+
+        db:
+                image: mysql:latest
+                ports:
+                        - "3306:3306"
+                command:
+                        - --default-authentication-plugin=mysql_native_password
+                environment:
+                        MYSQL_ROOT_PASSWORD: my-secret-pw
+                        MYSQL_DATABASE: notcian
+                        MYSQL_USER: user
+                        MYSQL_PASSWORD: punk9499
+                volumes:
+                        -  ./mysql_data:/var/lib/mysql
+ 
+
+        django:
+                build: ./notcian
+                ports:
+                        - "8002:8002"
+                environment:
+                        STATIC_ROOT: /host/static
+                        MEDIA_ROOT: /host/media
+                volumes:
+                        - ./media:/host/media
+                        - ./static:/host/static 
+                depends_on:
+                        - db
