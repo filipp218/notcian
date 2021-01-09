@@ -1,0 +1,23 @@
+{% extends 'adverts/base.html' %}
+{% load static %}
+{% block title %}
+  Registration
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+            <div class="features">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form}}<br>
+                    {{error}}<br>
+                    <button type= "submit" class = "btn btn-primary mt-4">Log in</button>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

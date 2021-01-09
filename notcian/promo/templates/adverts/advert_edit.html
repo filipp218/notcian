@@ -1,0 +1,45 @@
+{% extends 'adverts/base.html' %}
+{% load static %}
+{% block title %}
+  Advert edit
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+            <div class="features">
+                <form  method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    Название объявления<br>
+                    {{form.title}}<br>
+                    Описание<br>
+                    {{form.description}}<br>
+                    Дата<br>
+                    {{form.date}}<br>
+                    Автор<br>
+                    {{form.author}}<br>
+                    Адрес<br>
+                    {{form.address}}<br>
+                    Картинка<br>
+                    {{form.image}}<br>
+                    Цена<br>
+                    {{form.price}}<br>
+                    Состояние<br>
+                    {{form.status}}<br>
+                    Площадь<br>
+                    {{form.area}}<br>
+                    Этаж<br>
+                    {{form.floor}}<br>
+                    Год строения<br>
+                    {{form.year_of_flat}}<br>
+                    Город<br>
+                    {{form.city}}<br><br>
+                    <span>{{error}}</span>
+                    <button type= "submit" class = "btn btn-primary">Edit advert</button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

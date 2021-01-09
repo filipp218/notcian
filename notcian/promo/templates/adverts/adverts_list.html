@@ -1,0 +1,44 @@
+{% extends 'adverts/base.html' %}
+ {% load static %}
+
+{% block title %}
+  Нотциан
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <form action="/search" method="post">
+    {% csrf_token %}
+    <div style = "border: 1px solid #ccc; width: 80%;">
+    	<input name="query" value="{{query}}">
+    </div>
+    <button type="submit" class = "btn btn-success" >Искать</button>
+  </form>
+</div>
+
+
+
+<div class="container">
+      <h1> Объявления </h1>
+</div>
+
+<div class="container">
+  <div class="row">
+  {% for advert in advert_list %}
+    <div class="col-sm">
+    	<div class="card" style="width: 18rem ;heigh: 14rem">
+        	<img class="card-img-top" src="{% get_media_prefix %}{{advert.image}}" alt="{{advert.title}}">
+  		<div class="card-body">
+          		<h5 class="card-title">{{advert.title}}</h5>
+			<p class="card-text">{{advert.address}}, {{advert.area}}</p>
+			<p class="card-text"><small class="text-muted">{{advert.date}}</small></p>
+    			<a href="/{{advert.url}}" class="btn btn-outline-success">Подробнее</a>
+  		</div>
+	</div>
+    </div>
+  {% endfor %}
+  </div>
+ </div>
+
+{% endblock %}
+

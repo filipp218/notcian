@@ -1,0 +1,24 @@
+{% extends 'adverts/base.html' %}
+ {% load static %}
+
+{% block title %}
+  Ваши объявления
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+      <h1> Ваши объявления </h1>
+</div>
+<div class="container">
+  <div class="row">
+  {% for advert in advert_list %}
+    <div class="col-sm">
+    <p><a href="/{{advert.url}}">{{advert.title}}</a></p>
+    <p><a href="/{{advert.url}}"><img src="{% get_media_prefix %}{{advert.image}}" alt="flat" width="100" height="100"></p> <br>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
