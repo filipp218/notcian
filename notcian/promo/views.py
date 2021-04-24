@@ -116,16 +116,6 @@ class AdvertSearch(View):
         return render(request, "adverts/adverts_list.html" , {"advert_list": qs, "query": query})
 
 
-# class ProfileLogin(LoginView):
-#     def get(self, request):
-#         form = AuthProfileForm()
-#         data = {'form' : form}
-#         return render(request, 'adverts/auth.html', data)
-#
-#     def post(self,request):
-#         form = AuthProfileForm(request.POST)
-#
-
 class ProfileLogin(View):
     def get(self, request):
          form = AuthProfileForm()
